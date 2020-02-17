@@ -26,11 +26,6 @@
   ```
   y una vez terminado nos saldrá un mensaje con las instrucciones para activar el entorno. Lo activamos y ejecutamos la instrucción del punto previo.
 
-
-- Creamos la carpeta
-  ```
-  mkdir Input
-  ```
 ## Instrucciones de uso
 
 - Creamos la carpeta dentro de la carpeta  _/ruta/carpeta/creada_
