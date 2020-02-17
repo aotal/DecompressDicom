@@ -17,7 +17,8 @@ def getLastDirectory(x): return os.path.basename(
 
 
 def Decompress(FileInput, FileOutput):  # Descomprime el dicom en si
-    Out = dc.read_file(FileInput)
+    Out = dc.read_file(FileInput,force=True)
+   # Out.file_meta.TransferSyntaxUID = dc.uid.ImplicitVRLittleEndian  # or whatever is the correct transfer syntax for the file
     Out.decompress()
     dc.write_file(FileOutput, Out)
 
@@ -35,7 +36,7 @@ for X in tqdm(direc):
     files.append(glob2.glob(X + "/**", recursive=True))
 # Almacena los nombres de los ficheros del directorio Input (y sus subdirectorios) en una lista
 files = [j for i in files for j in i]
-files = [x for x in list(set(files)) if not os.path.isdir(x)]
+files = [x for x in list(set(files)) if not os.path.isdir(x) and os.path.splitext(x)[1]!='.db']
 
 
 # Crea los directorios correspondientes de Input en Output
